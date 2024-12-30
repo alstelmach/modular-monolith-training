@@ -11,4 +11,8 @@
       <ProjectReference Include="..\HWork.Shared.Application.Abstractions\HWork.Shared.Application.Abstractions.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Solution\" />
+    </ItemGroup>
+
 </Project>

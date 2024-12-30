@@ -1,5 +1,5 @@
+using HWork.Exercises.Domain.Exercise.ValueObjects;
 using HWork.Exercises.Domain.Solution.Events;
-using HWork.Exercises.Domain.Solution.Exceptions;
 using HWork.Exercises.Domain.Solution.ValueObjects;
 using HWork.Shared.Domain;
 
@@ -9,29 +9,24 @@ public sealed class Solution : AggregateRoot<SolutionId>
 {
     public Solution(
         SolutionId id,
-        string solutionText,
+        ExerciseId exerciseId,
+        string text,
         Score score)
             : base(id)
     {
-        SolutionText = solutionText;
+        ExerciseId = exerciseId;
+        Text = text;
         Score = score;
 
-        Enqueue(new SolutionPublished());
+        Enqueue(new SolutionSubmitted(
+            id,
+            exerciseId,
+            text));
     }
 
-    public string SolutionText { get; private set; }
+    public ExerciseId ExerciseId { get; }
+
+    public string Text { get; private set; }
+
     public Score Score { get; }
-    public bool IsDismissed { get; private set; }
-
-    public void Dismiss()
-    {
-        if (IsDismissed)
-        {
-            throw new SolutionAlreadyDismissedException();
-        }
-
-        IsDismissed = true;
-        
-        Enqueue(new SolutionDismissed());
-    }
 }

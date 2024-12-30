@@ -8,7 +8,7 @@ foreach (var module in modules)
 
 webApplicationBuilder
     .Services
-    .AddInfrastructureDependencies();
+    .AddInfrastructureDependencies(webApplicationBuilder.Configuration);
 
 await webApplicationBuilder
     .Build()

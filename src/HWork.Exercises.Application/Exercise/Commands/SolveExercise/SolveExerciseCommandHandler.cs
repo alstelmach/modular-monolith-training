@@ -32,8 +32,9 @@ public sealed class SolveExerciseCommandHandler : ICommandHandler<SolveExerciseC
             throw new ExerciseNotFoundException(command.ExerciseId);
         }
         
-        var solution = new Solution(
+        var solution = new Domain.Solution.Solution(
             command.SolutionId,
+            exercise.Id,
             command.SolutionContent,
             Score.CreateEmpty());
 
