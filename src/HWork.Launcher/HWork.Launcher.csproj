@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HWork.Exercises.Api\HWork.Exercises.Api.csproj" />
+      <ProjectReference Include="..\HWork.Reviews.Api\HWork.Reviews.Api.csproj" />
       <ProjectReference Include="..\HWork.Shared.Api.Abstractions\HWork.Shared.Api.Abstractions.csproj" />
       <ProjectReference Include="..\HWork.Shared.Infrastructure\HWork.Shared.Infrastructure.csproj" />
     </ItemGroup>

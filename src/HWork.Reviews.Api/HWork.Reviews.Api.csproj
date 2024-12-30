@@ -7,9 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\HWork.Exercises.Infrastructure\HWork.Exercises.Infrastructure.csproj" />
       <ProjectReference Include="..\HWork.Shared.Api.Abstractions\HWork.Shared.Api.Abstractions.csproj" />
-      <ProjectReference Include="..\HWork.Shared.Application.Abstractions\HWork.Shared.Application.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>

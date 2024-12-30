@@ -1,4 +1,11 @@
+using HWork.Exercises.Application.Exercise.Commands.SolveExercise;
+using HWork.Exercises.Application.Exercise.Commands.SubmitExercise;
+using HWork.Exercises.Domain.Exercise;
+using HWork.Exercises.Domain.Solution;
+using HWork.Exercises.Infrastructure.Persistence;
 using HWork.Shared.Abstractions;
+using HWork.Shared.Infrastructure.DependencyInjection;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +22,11 @@ public sealed class ExercisesModule : IModule
         var assemblyPart = new AssemblyPart(GetType().Assembly);
         
         services
+            .AddSingleton<IExerciseRepository, ExerciseRepository>()
+            .AddSingleton<ISolutionRepository, SolutionRepository>()
+            .AddScoped<IRequestHandler<SubmitExerciseCommand>, SubmitExerciseCommandHandler>()
+            .AddScoped<IRequestHandler<SolveExerciseCommand>, SolveExerciseCommandHandler>()
+            .UseTransactionsForCommands([typeof(SubmitExerciseCommand).Assembly])
             .AddControllers()
             .PartManager
             .ApplicationParts

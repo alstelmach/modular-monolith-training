@@ -7,13 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
-    </ItemGroup>
-
-    <ItemGroup>
+      <ProjectReference Include="..\HWork.Exercises.Domain\HWork.Exercises.Domain.csproj" />
       <ProjectReference Include="..\HWork.Shared.Application.Abstractions\HWork.Shared.Application.Abstractions.csproj" />
-      <ProjectReference Include="..\HWork.Shared.Domain.Abstractions\HWork.Shared.Domain.Abstractions.csproj" />
     </ItemGroup>
 
 </Project>
