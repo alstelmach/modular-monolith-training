@@ -7,8 +7,7 @@ public static class MiddlewaresSetup
     public static WebApplication UseSharedInfrastructureMiddlewares(this WebApplication webApplication)
     {
         webApplication
-            .UseDocumentationMiddlewares()
-            .UseHttpsRedirection();
+            .UseDocumentationMiddlewares();
 
         return webApplication;
     }

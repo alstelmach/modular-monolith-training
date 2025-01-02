@@ -15,11 +15,14 @@ public sealed class IntegrationEventListener<TEvent>(
     IOptions<ExternalMessagingConfiguration> options)
     where TEvent : IntegrationEvent
 {
-    private readonly string _hostName = options.Value.HostName;
-
     public async Task StartListeningAsync()
     {
-        var factory = new ConnectionFactory { HostName = _hostName };
+        var factory = new ConnectionFactory
+        {
+            HostName = options.Value.HostName,
+            Port = options.Value.Port,
+        };
+
         var queueName = typeof(TEvent).Name;
         var connection = await factory.CreateConnectionAsync();
         var channel = await connection.CreateChannelAsync();
@@ -33,7 +36,7 @@ public sealed class IntegrationEventListener<TEvent>(
 
         var consumer = new AsyncEventingBasicConsumer(channel);
 
-        consumer.ReceivedAsync += async (model, ea) =>
+        consumer.ReceivedAsync += async (_, ea) =>
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);

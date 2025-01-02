@@ -22,5 +22,5 @@ public static class MessagingDependencyInjectionRegistry
             .AddScoped<IDomainEventPublisher, DomainEventPublisher>()
             .AddScoped<ICommandBus, CommandBus>()
             .AddScoped<IIntegrationEventPublisher, IntegrationEventPublisher>()
-            .Configure<ExternalMessagingConfiguration>(configuration.GetSection("ExternalMessaging"));
+            .Configure<ExternalMessagingConfiguration>(configuration.GetSection(nameof(ExternalMessagingConfiguration)));
 }

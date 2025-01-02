@@ -38,6 +38,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWork.Shared.Domain.Abstrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HWork.Shared.Application.Abstractions", "src\HWork.Shared.Application.Abstractions\HWork.Shared.Application.Abstractions.csproj", "{BF6457AF-1B7F-4AAC-953F-7072D5EEAF32}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{26639E28-CA88-4864-8B5B-1BFE686A19AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{ADF46CC9-732F-4531-AA39-9E1B3EDA0821}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +69,7 @@ Global
 		{AB75C626-6BB5-4436-850F-D4B7C6202668} = {E149DEBF-4597-4665-B1E4-A705809291B1}
 		{503627C6-801D-4090-BB81-73EFB373710E} = {160DF0AB-ECB6-497B-BFAE-3AE5BE5F95FF}
 		{BF6457AF-1B7F-4AAC-953F-7072D5EEAF32} = {160DF0AB-ECB6-497B-BFAE-3AE5BE5F95FF}
+		{ADF46CC9-732F-4531-AA39-9E1B3EDA0821} = {26639E28-CA88-4864-8B5B-1BFE686A19AC}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B86719C9-79E1-44EB-8442-C5AD1B6109CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

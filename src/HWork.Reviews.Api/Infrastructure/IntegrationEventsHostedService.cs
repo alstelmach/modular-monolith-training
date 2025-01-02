@@ -1,4 +1,3 @@
-using HWork.Reviews.Api.Events.Integration;
 using HWork.Reviews.Api.Events.Integration.SolutionSubmitted;
 using HWork.Shared.Infrastructure.Messaging;
 using Microsoft.Extensions.Hosting;

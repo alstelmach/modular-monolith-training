@@ -1,4 +1,3 @@
-using HWork.Reviews.Api.Events.Integration;
 using HWork.Reviews.Api.Events.Integration.SolutionSubmitted;
 using HWork.Reviews.Api.Infrastructure;
 using HWork.Shared.Abstractions;

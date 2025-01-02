@@ -10,11 +10,14 @@ namespace HWork.Shared.Infrastructure.Messaging;
 public sealed class IntegrationEventPublisher(IOptions<ExternalMessagingConfiguration> options)
     : IIntegrationEventPublisher
 {
-    private readonly string _hostName = options.Value.HostName;
-
     public async Task PublishAsync(IntegrationEvent integrationEvent)
     {
-        var factory = new ConnectionFactory { HostName = _hostName };
+        var factory = new ConnectionFactory
+        {
+            HostName = options.Value.HostName,
+            Port = options.Value.Port,
+        };
+
         var queueName = integrationEvent.GetType().Name;
 
         await using var connection = await factory.CreateConnectionAsync();
