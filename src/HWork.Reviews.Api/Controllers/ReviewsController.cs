@@ -8,5 +8,5 @@ public sealed class ReviewsController : ControllerBase
 {
     [HttpGet]
     public IActionResult GetAsync() =>
-        Ok(new[] { "Super przedmiot!" });
+        Ok(new[] { "Ok!" });
 }

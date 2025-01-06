@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{0E41
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DDBC39A1-47C6-43E6-9335-025A5F4C8A49}"
 	ProjectSection(SolutionItems) = preProject
-		docs\context-map-big-picture.png = docs\context-map-big-picture.png
+		docs\context-map-big-picture-example.png = docs\context-map-big-picture-example.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{160DF0AB-ECB6-497B-BFAE-3AE5BE5F95FF}"

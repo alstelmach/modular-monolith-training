@@ -1,4 +1,4 @@
-namespace HWork.Shared.Application.Abstractions.Messaging;
+namespace HWork.Shared.Infrastructure.Messaging;
 
 public record ExternalMessagingConfiguration
 {
