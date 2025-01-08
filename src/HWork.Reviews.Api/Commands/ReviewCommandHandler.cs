@@ -31,6 +31,9 @@ public sealed class ReviewCommandHandler : ICommandHandler<ReviewCommand>
                 request.ReviewerId,
                 request.Rating));
 
+        // This is obviously dumb
+        solution.Score += 1;
+
         await _solutionRepository.UpdateAsync(solution);
     }
 }

@@ -13,6 +13,7 @@ public class SolutionSubmittedIntegrationEventHandler(SolutionRepository solutio
             new Solution(
                 @event.SolutionId,
                 @event.SentAt,
+                0.0,
                 new List<Review>()));
     }
 }
