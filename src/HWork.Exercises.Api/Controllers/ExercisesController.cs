@@ -20,8 +20,7 @@ public sealed class ExercisesController(ICommandBus commandBus) : ControllerBase
         return CreatedAtRoute(
             routeName: nameof(GetExerciseAsync),
             routeValues: new { exerciseId = command.ExerciseId.Value },
-            value: new { message = "Exercise created successfully", id = command.ExerciseId.Value }
-        );
+            value: new { message = "Exercise created successfully", id = command.ExerciseId.Value });
     }
 
     [HttpPost("{exerciseId:guid}/solutions")]

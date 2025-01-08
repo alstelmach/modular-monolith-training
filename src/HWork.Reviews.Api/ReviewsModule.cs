@@ -1,8 +1,10 @@
+using HWork.Reviews.Api.Commands;
 using HWork.Reviews.Api.Events.Integration.SolutionSubmitted;
 using HWork.Reviews.Api.Infrastructure;
 using HWork.Shared.Abstractions;
 using HWork.Shared.Application.Abstractions.Services;
 using HWork.Shared.Infrastructure.Messaging;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +24,7 @@ public sealed class ReviewsModule : IModule
             .AddSingleton<IntegrationEventListener<SolutionSubmitted>>()
             .AddHostedService<IntegrationEventsHostedService>()
             .AddScoped<IIntegrationEventHandler<SolutionSubmitted>, SolutionSubmittedIntegrationEventHandler>()
+            .AddScoped<IRequestHandler<ReviewCommand>, ReviewCommandHandler>()
             .AddControllers()
             .PartManager
             .ApplicationParts

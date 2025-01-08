@@ -1,11 +1,18 @@
+using HWork.Reviews.Api.Entities;
+using HWork.Reviews.Api.Repositories;
 using HWork.Shared.Application.Abstractions.Services;
 
 namespace HWork.Reviews.Api.Events.Integration.SolutionSubmitted;
 
-public class SolutionSubmittedIntegrationEventHandler : IIntegrationEventHandler<SolutionSubmitted>
+public class SolutionSubmittedIntegrationEventHandler(SolutionRepository solutionRepository)
+    : IIntegrationEventHandler<SolutionSubmitted>
 {
-    public Task HandleAsync(SolutionSubmitted @event)
+    public async Task HandleAsync(SolutionSubmitted @event)
     {
-        throw new NotImplementedException();
+        await solutionRepository.CreateAsync(
+            new Solution(
+                @event.SolutionId,
+                @event.SentAt,
+                new List<Review>()));
     }
 }
