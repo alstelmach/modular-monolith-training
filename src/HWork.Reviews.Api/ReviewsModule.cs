@@ -1,6 +1,7 @@
 using HWork.Reviews.Api.Commands;
 using HWork.Reviews.Api.Events.Integration.SolutionSubmitted;
 using HWork.Reviews.Api.Infrastructure;
+using HWork.Reviews.Api.Repositories;
 using HWork.Shared.Abstractions;
 using HWork.Shared.Application.Abstractions.Services;
 using HWork.Shared.Infrastructure.Messaging;
@@ -25,6 +26,7 @@ public sealed class ReviewsModule : IModule
             .AddHostedService<IntegrationEventsHostedService>()
             .AddScoped<IIntegrationEventHandler<SolutionSubmitted>, SolutionSubmittedIntegrationEventHandler>()
             .AddScoped<IRequestHandler<ReviewCommand>, ReviewCommandHandler>()
+            .AddSingleton<SolutionRepository>()
             .AddControllers()
             .PartManager
             .ApplicationParts

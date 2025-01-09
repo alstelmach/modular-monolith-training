@@ -3,7 +3,10 @@ using HWork.Shared.Application.Abstractions.Messaging;
 using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace HWork.Shared.Infrastructure.Messaging;
 
@@ -29,7 +32,8 @@ public sealed class IntegrationEventPublisher(IOptions<ExternalMessagingConfigur
             false,
             false);
         
-        var message = JsonSerializer.Serialize(integrationEvent);
+        var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, };
+        var message = JsonConvert.SerializeObject(integrationEvent, settings);
         var body = Encoding.UTF8.GetBytes(message);
 
         await channel.BasicPublishAsync(

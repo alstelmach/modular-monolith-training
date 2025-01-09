@@ -6,6 +6,7 @@ using HWork.Shared.Application.Abstractions.Messaging;
 using HWork.Shared.Application.Abstractions.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using RabbitMQ.Client.Events;
 
 namespace HWork.Shared.Infrastructure.Messaging;
@@ -43,7 +44,7 @@ public sealed class IntegrationEventListener<TEvent>(
 
             try
             {
-                var integrationEvent = JsonSerializer.Deserialize<TEvent>(message);
+                var integrationEvent = JsonConvert.DeserializeObject<TEvent>(message);
 
                 if (integrationEvent != null)
                 {

@@ -10,8 +10,8 @@ public sealed class SolutionSubmittedDomainEventHandler(IIntegrationEventPublish
     {
         var timestamp = DateTimeOffset.UtcNow;
         var integrationEvent = new SolutionSubmitted(
-            @event.SolutionId,
-            @event.ExerciseId,
+            @event.SolutionId.Value,
+            @event.ExerciseId.Value,
             @event.Text,
             timestamp);
 

@@ -32,7 +32,10 @@ public sealed class ExercisesController(ICommandBus commandBus) : ControllerBase
 
         await commandBus.SendAsync(command);
 
-        return Ok();
+        return CreatedAtRoute(
+            routeName: "GetSolutionAsync",
+            routeValues: new { solutionId = command.SolutionId.Value },
+            value: new { message = "Solution created successfully", id = command.SolutionId.Value });
     }
 
     [HttpGet("{exerciseId:guid}", Name = nameof(GetExerciseAsync))]
