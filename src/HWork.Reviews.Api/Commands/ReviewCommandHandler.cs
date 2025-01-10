@@ -1,6 +1,8 @@
 using HWork.Reviews.Api.Entities;
+using HWork.Reviews.Api.Events.Integration.SolutionScoreChanged;
 using HWork.Reviews.Api.Exceptions;
 using HWork.Reviews.Api.Repositories;
+using HWork.Shared.Application.Abstractions.Messaging;
 using HWork.Shared.Application.Abstractions.Services;
 
 namespace HWork.Reviews.Api.Commands;
@@ -8,10 +10,13 @@ namespace HWork.Reviews.Api.Commands;
 public sealed class ReviewCommandHandler : ICommandHandler<ReviewCommand>
 {
     private readonly SolutionRepository _solutionRepository;
+    private readonly IIntegrationEventPublisher _publisher;
 
-    public ReviewCommandHandler(SolutionRepository solutionRepository)
+    public ReviewCommandHandler(SolutionRepository solutionRepository,
+        IIntegrationEventPublisher publisher)
     {
         _solutionRepository = solutionRepository;
+        _publisher = publisher;
     }
     
     public async Task Handle(
@@ -35,5 +40,11 @@ public sealed class ReviewCommandHandler : ICommandHandler<ReviewCommand>
         solution.Score += 1;
 
         await _solutionRepository.UpdateAsync(solution);
+
+        await _publisher.PublishAsync(new SolutionScoreChanged(
+            solution.Id,
+            solution.Score,
+            string.Empty,
+            DateTimeOffset.Now));
     }
 }
